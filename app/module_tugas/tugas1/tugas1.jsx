@@ -1,0 +1,1 @@
+export { default } from "@/components/module_tugas/tugas1/tugas1";
