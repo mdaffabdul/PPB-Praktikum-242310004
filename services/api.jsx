@@ -54,3 +54,26 @@ export const AUTH_USER = async (param) => {
     };
   }
 };
+
+// ── REGISTER ──────────────────────────────────────────────────
+export const REGISTER_USER = async (userData) => {
+  try {
+    const config = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      url: "https://fakestoreapi.com/users",
+      data: userData,
+    };
+
+    const response = await AXIOS_REQUEST(config);
+    console.log("REGISTER_USER response:", response);
+    return response;
+  } catch (error) {
+    console.warn("Error in REGISTER_USER:", error);
+    return {
+      loading: false,
+      message: "An unexpected error occurred during registration. Please try again.",
+      data: [],
+    };
+  }
+};

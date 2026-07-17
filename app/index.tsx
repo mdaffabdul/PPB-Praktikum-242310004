@@ -5,7 +5,7 @@ export default function Index() {
   return (
     <View>
       <Text>Landing Page</Text>
-      <Link href={"/module_tugas/tugas7"} push asChild>
+      <Link href={"/module_tugas/tugas8"} push asChild>
         <Button title="Get Started" />
       </Link>
     </View>
