@@ -1,20 +1,45 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { styles } from "../styles/StyleApps";
 
 const Header = () => {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    checkLoginStatus();
+  }, []);
+
+  const checkLoginStatus = async () => {
+    try {
+      const userDataString = await AsyncStorage.getItem("userData");
+      if (userDataString === null) {
+        setUserData({ username: "Discover Books" });
+      } else {
+        const parsedUserData = JSON.parse(userDataString);
+        setUserData(parsedUserData);
+      }
+    } catch (error) {
+      console.warn("Error checking login status:", error);
+      setUserData({ username: "Discover Books" });
+    }
+  };
+
   return (
     <View style={styles.h_container}>
       <View>
         <Text style={styles.sub_title}>Good Morning👋</Text>
-        <Text style={styles.title}>Discover Books</Text>
+        {/* Tampilkan username jika login, "Discover Books" jika belum */}
+        <Text style={styles.title}>
+          {userData?.username || "Discover Books"}
+        </Text>
       </View>
 
       <View style={{ flexDirection: "row", gap: 10 }}>
         <TouchableOpacity style={[styles.btn_icon, styles.shadow]}>
           <Ionicons name="search-outline" size={24} color="gray" />
         </TouchableOpacity>
-
         <TouchableOpacity style={styles.btn_icon}>
           <Ionicons name="notifications-outline" size={24} color="gray" />
         </TouchableOpacity>

@@ -11,7 +11,9 @@ export default function BookCollectioins({ books }) {
         <Text style={styles.container_book_collections_title}>
           Book Collection
         </Text>
-        <Text style={{ color: color_list.green }}>See All</Text>
+        <Text style={{ color: color_list.green }}>
+          Total {books.length} Items
+        </Text>
       </View>
 
       <BookList books={sortedBooks} />
