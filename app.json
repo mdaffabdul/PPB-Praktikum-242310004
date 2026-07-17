@@ -43,6 +43,13 @@
             "backgroundColor": "#000000"
           }
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow PPB_242310004 to access your camera",
+          "microphonePermission": "Allow PPB_242310004 to access your microphone"
+        }
       ]
     ],
     "experiments": {
